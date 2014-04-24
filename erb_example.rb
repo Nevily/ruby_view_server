@@ -1,5 +1,9 @@
 require 'erb'
 
-x = 42
-template = ERB.new "The value of x is: <%= x %>"
+number = 55
+name = "Nevily"
+last_name = "Aular"
+user = {:name => name, :last_name => last_name, :number => number}
+
+template = ERB.new "Name: <%= user[:name] %>  Last Name: <%= user[:last_name] %>   Number: <%= user[:number] %> "
 puts template.result(binding)
