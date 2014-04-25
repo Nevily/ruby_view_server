@@ -2,15 +2,6 @@
 <% dishes = ['pasta', 'cesar salad', 'risotto'] %>
 <% menu_items = ['home', 'about us', 'products', 'services', 'contact']%>
 
-<header> 
-	<h1> Logo and title go here </h1>
-	<ul>
-		<% menu_items.each do |item| %>
-			<li><a href="#"> <%= item.capitalize %></a></li>
-		<% end %>
-	</ul>
-</header>
-
 <div> 
 	<h2>Title goes here.</h2>
 	<p> Hi I am <%= name %>, I would like you to check out my website and let me know what you think! </p>
@@ -22,7 +13,3 @@
 		<% end %>
 	</ul>
 </div>
-
-<footer>
-	<h5> Website made by <%= name %> </h5>
-</footer>
