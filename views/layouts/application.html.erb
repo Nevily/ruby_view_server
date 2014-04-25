@@ -4,7 +4,22 @@
      end
     %>
 <html>
-  <body>   
+  <body>
+  <% if @request.query['first_name'] && !@request.query['first_name'].empty? %>
+    <% if @request.query['sex'] && !@request.query['sex'].empty?%> 
+      <% if  @request.query['sex'] == 'male' %>
+        Hello there mister <%= @request.query['first_name'] %>
+      <% end %>
+      <% if  @request.query['sex'] == 'female' %>
+        Hello there missus <%= @request.query['first_name'] %>
+      <% end %>
+    <% else %>
+      Hello there <%= @request.query['first_name'] %>
+    <% end %>
+  <% else %>
+    Enter the name
+  <% end %> 
+
     <p>
       <%= link_to('Me', 'me.html') %>
       <%= link_to('Home', 'index.html') %>
@@ -14,10 +29,19 @@
     <hr />
     <div>
       <%= yield %>
+
+    <form method='post' action="<%= @request.path %>">
+      First name: <input type="text" name="first_name" placeholder='first name'/><br /><br>
+      <input type="radio" name="sex" value="male">Male<br>
+      <input type="radio" name="sex" value="female">Female<br><br>
+      <input type="submit" value="Submit" />
+    </form>
+
     </div>
     <hr />
     <div>
-       <%= link_to('This is a link to google', 'http://google.com') %>
+      <%= @request.query.inspect %>
+      <%= link_to('This is a link to google', 'http://google.com') %>
     </div>
   </body>
 </html>
